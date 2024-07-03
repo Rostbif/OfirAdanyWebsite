@@ -10,16 +10,16 @@ const Header = () => {
             src="../public/OfirAdanyLogo.png"
             alt="Ofir Adany Logo"
             style={{ width: 200, height: 48 }}
-            className="shadow-black-500"
+            className="shadow-lg shadow-black-500"
           />
         </div>
         <div className="flex flex-col justify-center">
           <div className="flex gap-2">
-            <NavLink to="/" className="hover:font-bold">
+            <NavLink to="/" className="hover:font-bold drop-shadow-md">
               Home
             </NavLink>
             <div className="justify-self-center">|</div>
-            <NavLink to="/blog" className="hover:font-bold">
+            <NavLink to="/blog" className="hover:font-bold drop-shadow-md">
               Blog
             </NavLink>
           </div>
