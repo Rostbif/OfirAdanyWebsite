@@ -2,9 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col px-10">
       <div className="flex flex-row justify-between m-4">
-        {/* <div>Logo</div> */}
         <div>
           <img
             src="../public/OfirAdanyLogo.png"
