@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import styles from "./Header.module.css";
 
 const Header = () => {
   return (
@@ -12,10 +13,20 @@ const Header = () => {
             className="shadow-lg shadow-black-500"
           />
         </div>
+
+        <div className={styles.container + " " + styles.fontColor}> pita </div>
         <div className="flex flex-col justify-center">
           <div className="flex gap-2">
             <NavLink to="/" className="hover:font-bold drop-shadow-md">
               Home
+            </NavLink>
+            <div className="justify-self-center">|</div>
+            <NavLink to="/about-me" className="hover:font-bold drop-shadow-md">
+              About Me
+            </NavLink>
+            <div className="justify-self-center">|</div>
+            <NavLink to="/about-me" className="hover:font-bold drop-shadow-md">
+              Projects
             </NavLink>
             <div className="justify-self-center">|</div>
             <NavLink to="/blog" className="hover:font-bold drop-shadow-md">
