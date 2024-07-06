@@ -13,8 +13,6 @@ const Header = () => {
             className="shadow-lg shadow-black-500"
           />
         </div>
-
-        <div className={styles.container + " " + styles.fontColor}> pita </div>
         <div className="flex flex-col justify-center">
           <div className="flex gap-2">
             <NavLink to="/" className="hover:font-bold drop-shadow-md">

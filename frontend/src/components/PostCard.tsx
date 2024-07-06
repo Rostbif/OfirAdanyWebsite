@@ -12,6 +12,7 @@ const PostCard = ({ title, category, description }: PostCardProps) => {
       <h1>{title}</h1>
       <h2>{category}</h2>
       <p> {description} </p>
+      <hr />3 minutes
     </div>
   );
 };
