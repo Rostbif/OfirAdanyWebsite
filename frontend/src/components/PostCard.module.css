@@ -1,0 +1,10 @@
+.postCardContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed white;
+}
+
+.postCardContainer:hover {
+  border-color: #646cff;
+  background-color: #f0f0f0;
+}
