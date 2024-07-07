@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import styles from "./Blog.module.css";
 
@@ -13,9 +14,8 @@ const Blog = () => {
   // for each blog post I want to calculate the time for reading
   // The blog post entity itself is going to have also the content it self.
   // so I should generate a list of blog post cards.
-  // let blogPosts = [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-  // Generate 10 posts
 
+  const navigate = useNavigate();
   Array.from({ length: 10 });
   const posts: BlogPost[] = Array.from({ length: 10 }, (_, index) => ({
     title: `Post ${index + 1}`,
@@ -25,6 +25,11 @@ const Blog = () => {
     }. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     Sed euismod, nisi at aliquet aliquam.`,
   }));
+
+  const handleClick = () => {
+    //console.log("Clicked on post: ", e);
+    navigate("/blogPost");
+  };
 
   return (
     <div className={styles.blogPageContainer}>
@@ -37,6 +42,7 @@ const Blog = () => {
               title={post.title}
               category={post.category}
               description={post.description}
+              onClick={handleClick}
             ></PostCard>
           );
         })}

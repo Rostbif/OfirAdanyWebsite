@@ -6,7 +6,7 @@ const HomePage = () => {
     <div className="flex flex-col justify-center items-center grow">
       {/* <div className="font-bold flex justify-center text-2xl">Home Page</div> */}
 
-      <div className="grow flex flex-col justify-center">
+      <div className="grow grid grid-rows-[3fr_1fr]">
         <div className="flex gap-6 items-center">
           <div className="basis-1/4">
             <h1 className="text-8xl font-semibold border-b-2 border-dashed border-black pb-6 drop-shadow-md">

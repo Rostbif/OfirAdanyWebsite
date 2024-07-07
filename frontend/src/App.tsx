@@ -8,6 +8,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 function App() {
   return (
@@ -26,6 +27,14 @@ function App() {
           element={
             <Layout>
               <Blog />
+            </Layout>
+          }
+        />
+        <Route
+          path="/blogPost"
+          element={
+            <Layout>
+              <BlogPost />
             </Layout>
           }
         />

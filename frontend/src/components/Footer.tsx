@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="grid grid-cols-5 items-center bg-sky-500 h-12">
-      <div className="col-start-3 drop-shadow-md">
+      <div className="col-start-3 drop-shadow-md flex justify-center">
         <Link to="/privacPolicy">Privacy Policy</Link>
         <span> | </span>
         <Link to="/termsOfService">Terms of Service</Link>
