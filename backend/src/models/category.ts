@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { CategoryType } from "../shared/types";
-// import { createSchemaWithBase } from "./base";
+// import {  } from "./base";
 
 export const categorySchema = new mongoose.Schema<CategoryType>(
   {
@@ -9,8 +9,6 @@ export const categorySchema = new mongoose.Schema<CategoryType>(
   },
   { timestamps: true }
 );
-
-// createSchemaWithBase(categorySchema);
 
 export const Category = mongoose.model<CategoryType>(
   "Category",

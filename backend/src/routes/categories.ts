@@ -1,9 +1,8 @@
 import express, { Request, Response } from "express";
 import { Category } from "../models/category";
-import { CategoryType } from "../shared/types";
+import { BlogPostType, CategoryType } from "../shared/types";
 
-// want to have here CRUD for the general models.
-// start with the CRUD for the general models.
+// router
 const router = express.Router();
 
 // Get all categories
@@ -45,6 +44,20 @@ router.post("/", async (req: Request, res: Response) => {
     console.log("error in creating hotel", error);
     res.status(500).send({ message: "Error in creating hotel" });
   }
+});
+
+// update a category
+router.put("/:categoryId", async (req: Request, res: Response) => {
+  try {
+    const updatedCategory: CategoryType = req.body;
+    const category = await Category.findOneAndUpdate(
+      { _id: req.params.categoryId },
+      updatedCategory,
+      { new: true }
+    );
+
+    return res.status(201).json(category);
+  } catch (error) {}
 });
 
 export default router;
