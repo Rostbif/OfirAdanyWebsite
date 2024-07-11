@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -35,6 +36,14 @@ function App() {
           element={
             <Layout>
               <BlogPost />
+            </Layout>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Layout>
+              <Login />
             </Layout>
           }
         />
