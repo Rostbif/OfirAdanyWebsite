@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import styles from "./Login.module.css";
 import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from "../api/api-client";
+import { useAppContext } from "../contexts/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export type LoginFormData = {
   email: string;
@@ -10,6 +12,8 @@ export type LoginFormData = {
 
 export const Login = () => {
   const queryClient = useQueryClient();
+  const { showToast } = useAppContext();
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -20,11 +24,14 @@ export const Login = () => {
     onSuccess: async () => {
       console.log("user signed in successfully");
       // show toast
+      showToast({ message: "Successful login!", type: "Success" });
       // validate token
       // navigate to admin panel
+      navigate("/");
     },
     onError: (error: Error) => {
       // show the error toast
+      showToast({ message: "Unsuccessful login!", type: "Error" });
       console.log("the error:", error);
     },
   });
