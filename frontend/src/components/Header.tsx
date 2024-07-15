@@ -1,9 +1,32 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useAppContext } from "../contexts/AppContext";
+import { useMutation, useQueryClient } from "react-query";
+import * as apiClient from "../api/api-client";
 
 const Header = () => {
-  const { isLoggedIn } = useAppContext();
+  const { isLoggedIn, showToast } = useAppContext();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation(apiClient.logout, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("validateToken");
+      console.log("user signed out successfully");
+      showToast({ message: "Successful logut!", type: "Success" });
+      // validate token
+      navigate("/");
+    },
+    onError: (error: Error) => {
+      // show the error toast
+      showToast({ message: "Unsuccessful logout!", type: "Error" });
+      console.log("the error:", error);
+    },
+  });
+
+  const handleClick = () => {
+    mutation.mutate();
+  };
 
   return (
     <div className="flex px-10 flex-col">
@@ -20,11 +43,22 @@ const Header = () => {
         {/* Insert here the name of the logged in user + logout option */}
         <div>
           <span> Welcome </span>
-          {isLoggedIn ? " user + logout" : " guest"}
+          {isLoggedIn ? (
+            <span>
+              {" "}
+              user{" "}
+              <button className="underline text-blue-500" onClick={handleClick}>
+                {" "}
+                Logout{" "}
+              </button>
+            </span>
+          ) : (
+            " guest"
+          )}
         </div>
 
         <div className="flex flex-col justify-end flex-grow">
-          <div className="flex gap-2">
+          <div className="flex gap-2 self-end">
             <NavLink to="/" className="hover:font-bold drop-shadow-md">
               Home
             </NavLink>

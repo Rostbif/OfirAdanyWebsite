@@ -9,7 +9,7 @@ export type BlogPostType = BasicModelType & {
   description: string;
   category: CategoryType;
   content: string;
-  author: UserType;
+  author: UserType | null;
 };
 
 export type CategoryType = BasicModelType & {

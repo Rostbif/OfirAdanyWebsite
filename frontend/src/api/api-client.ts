@@ -6,7 +6,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 export const signIn = async (formData: LoginFormData) => {
   const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
     method: "POST",
-    //credentials: "include",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
@@ -20,6 +20,17 @@ export const signIn = async (formData: LoginFormData) => {
   }
 
   return responseBody;
+};
+
+export const logout = async () => {
+  const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
+    credentials: "include",
+    method: "POST",
+  });
+
+  if (!response.ok) {
+    throw new Error("couldn't logout");
+  }
 };
 
 export const register = async (formData: RegisterFormData) => {
