@@ -3,7 +3,7 @@ import styles from "./Login.module.css";
 import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from "../api/api-client";
 import { useAppContext } from "../contexts/AppContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export type LoginFormData = {
   email: string;
@@ -70,6 +70,14 @@ export const Login = () => {
       >
         Login
       </button>
+      <span className="text-sm">
+        {" "}
+        Not registered?{" "}
+        <Link to="/register" className="underline">
+          {" "}
+          Create an Account{" "}
+        </Link>
+      </span>
     </form>
   );
 };

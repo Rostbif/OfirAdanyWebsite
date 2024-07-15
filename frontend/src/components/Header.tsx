@@ -1,11 +1,14 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
+import { useAppContext } from "../contexts/AppContext";
 
 const Header = () => {
+  const { isLoggedIn } = useAppContext();
+
   return (
-    <div className="flex flex-col px-10">
-      <div className="flex flex-row justify-between m-4">
-        <div>
+    <div className="flex px-10 flex-col">
+      <div className="flex flex-row items-center m-4">
+        <div className="flex-grow">
           <img
             src="../public/OfirAdanyLogo.png"
             alt="Ofir Adany Logo"
@@ -13,7 +16,14 @@ const Header = () => {
             className="shadow-lg shadow-black-500"
           />
         </div>
-        <div className="flex flex-col justify-center">
+
+        {/* Insert here the name of the logged in user + logout option */}
+        <div>
+          <span> Welcome </span>
+          {isLoggedIn ? " user + logout" : " guest"}
+        </div>
+
+        <div className="flex flex-col justify-end flex-grow">
           <div className="flex gap-2">
             <NavLink to="/" className="hover:font-bold drop-shadow-md">
               Home
@@ -30,6 +40,17 @@ const Header = () => {
             <NavLink to="/blog" className="hover:font-bold drop-shadow-md">
               Blog
             </NavLink>
+            {isLoggedIn && (
+              <>
+                <div className="justify-self-center">|</div>
+                <NavLink
+                  to="/admin-panel"
+                  className="hover:font-bold drop-shadow-md"
+                >
+                  Admin Panel
+                </NavLink>
+              </>
+            )}
           </div>
         </div>
       </div>

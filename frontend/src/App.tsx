@@ -10,8 +10,13 @@ import {
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import { useAppContext } from "./contexts/AppContext";
+import AdminPanel from "./pages/AdminPanel";
 
 function App() {
+  const { isLoggedIn } = useAppContext();
+
   return (
     <Router>
       <Routes>
@@ -47,6 +52,25 @@ function App() {
             </Layout>
           }
         />
+        <Route
+          path="/register"
+          element={
+            <Layout>
+              <Register />
+            </Layout>
+          }
+        />
+        {isLoggedIn && (
+          <Route
+            path="/admin-panel"
+            element={
+              <Layout>
+                <AdminPanel />
+              </Layout>
+            }
+          />
+        )}
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
