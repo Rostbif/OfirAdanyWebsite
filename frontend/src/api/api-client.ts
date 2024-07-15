@@ -1,5 +1,6 @@
 import { LoginFormData } from "../pages/Login";
 import { RegisterFormData } from "../pages/Register";
+import { ValidateTokenResponse } from "../../../backend/src/shared/types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
@@ -51,7 +52,7 @@ export const register = async (formData: RegisterFormData) => {
   return responseBody;
 };
 
-export const validateToken = async () => {
+export const validateToken = async (): ValidateTokenResponse => {
   // keep in mind that even if we have catched the error,
   // chrome devtools write to the console any 400-500 responses
   const response = await fetch(`${API_BASE_URL}/api/auth/validate-token`, {

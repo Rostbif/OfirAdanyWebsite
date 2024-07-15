@@ -25,8 +25,8 @@ export const Login = () => {
       console.log("user signed in successfully");
       // show toast
       showToast({ message: "Successful login!", type: "Success" });
-      // validate token
-      // navigate to admin panel
+      // refresh the validate token data
+      await queryClient.invalidateQueries("validateToken");
       navigate("/");
     },
     onError: (error: Error) => {
@@ -78,6 +78,7 @@ export const Login = () => {
           Create an Account{" "}
         </Link>
       </span>
+      {mutation.isLoading && <span> Loading... </span>}
     </form>
   );
 };

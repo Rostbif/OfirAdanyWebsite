@@ -23,3 +23,8 @@ export type UserType = BasicModelType & {
   email: string;
   password: string;
 };
+
+export type ValidateTokenResponse = {
+  userId: string;
+  userName: string;
+};

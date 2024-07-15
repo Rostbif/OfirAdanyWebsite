@@ -1,11 +1,11 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useAppContext } from "../contexts/AppContext";
 import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from "../api/api-client";
 
 const Header = () => {
-  const { isLoggedIn, showToast } = useAppContext();
+  const { isLoggedIn, showToast, userName } = useAppContext();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -30,8 +30,8 @@ const Header = () => {
 
   return (
     <div className="flex px-10 flex-col">
-      <div className="flex flex-row items-center m-4">
-        <div className="flex-grow">
+      <div className="flex items-center justify-between m-4">
+        <div className="flex-1">
           <img
             src="../public/OfirAdanyLogo.png"
             alt="Ofir Adany Logo"
@@ -41,23 +41,36 @@ const Header = () => {
         </div>
 
         {/* Insert here the name of the logged in user + logout option */}
-        <div>
-          <span> Welcome </span>
-          {isLoggedIn ? (
-            <span>
-              {" "}
-              user{" "}
-              <button className="underline text-blue-500" onClick={handleClick}>
+        <div className="flex-1 flex justify-center">
+          <div>
+            <span> Welcome </span>
+            {isLoggedIn ? (
+              <span>
                 {" "}
-                Logout{" "}
-              </button>
-            </span>
-          ) : (
-            " guest"
-          )}
+                {userName}
+                {", "}
+                <button
+                  className="underline text-blue-500"
+                  onClick={handleClick}
+                >
+                  {" "}
+                  Logout{" "}
+                </button>
+              </span>
+            ) : (
+              <span>
+                {" "}
+                guest{", "}
+                <Link className="underline text-blue-500" to="/login">
+                  {" "}
+                  Login{" "}
+                </Link>{" "}
+              </span>
+            )}
+          </div>
         </div>
 
-        <div className="flex flex-col justify-end flex-grow">
+        <div className="flex flex-col flex-1">
           <div className="flex gap-2 self-end">
             <NavLink to="/" className="hover:font-bold drop-shadow-md">
               Home
