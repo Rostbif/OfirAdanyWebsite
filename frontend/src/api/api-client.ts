@@ -4,6 +4,7 @@ import { ValidateTokenResponse } from "../../../backend/src/shared/types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
+// authentication
 export const signIn = async (formData: LoginFormData) => {
   const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
     method: "POST",
@@ -61,6 +62,25 @@ export const validateToken = async (): ValidateTokenResponse => {
 
   if (!response.ok) {
     throw new Error("Token invalid");
+  }
+
+  return response.json();
+};
+
+// BlogPosts
+
+export const AddPost = async (data) => {
+  const response = await fetch(`${API_BASE_URL}/api/blog-posts`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("Couldn't add post");
   }
 
   return response.json();
