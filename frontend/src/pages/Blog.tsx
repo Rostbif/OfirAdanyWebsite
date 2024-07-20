@@ -28,7 +28,10 @@ const Blog = () => {
     Sed euismod, nisi at aliquet aliquam.`,
   }));
 
-  const { data: posts2 } = useQuery("getPosts", apiClient.getAllPosts);
+  const { data: posts2 } = useQuery<BlogPostType[]>(
+    "getAllPosts",
+    apiClient.getAllPosts
+  );
 
   const handleClick = () => {
     //console.log("Clicked on post: ", e);
@@ -40,12 +43,13 @@ const Blog = () => {
       <div className="font-bold text-2xl py-8">Blog Page</div>
       <hr></hr>
       <div className={styles.postCardsContainer}>
-        {posts.map((post) => {
+        {posts2?.map((post) => {
           return (
             <PostCard
               title={post.title}
-              category={post.category}
+              categories={post.categories}
               description={post.description}
+              content={post.content}
               onClick={handleClick}
             ></PostCard>
           );
