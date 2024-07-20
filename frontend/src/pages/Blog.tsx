@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import styles from "./Blog.module.css";
+import { useQuery } from "react-query";
+import * as apiClient from "../api/api-client";
 
 export type BlogPost = {
   title: string;
@@ -25,6 +27,8 @@ const Blog = () => {
     }. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     Sed euismod, nisi at aliquet aliquam.`,
   }));
+
+  const { data: posts2 } = useQuery("getPosts", apiClient.getAllPosts);
 
   const handleClick = () => {
     //console.log("Clicked on post: ", e);

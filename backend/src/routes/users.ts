@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", async (req: Request, res: Response) => {
   try {
     console.log("reached users routes");
-    const users = await User.find().select(["firstName", "lastName"]);
+    const users = await User.find().select(["_id", "firstName", "lastName"]);
     const usersStringified = JSON.stringify(users);
     //res.json(users);
     return res.status(200).json(users);

@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import * as apiClient from "../api/api-client";
 import { useAppContext } from "../contexts/AppContext";
 
@@ -8,8 +8,8 @@ export type AddPostFormData = {
   title: string;
   description: string;
   content: string;
-  authorId: number;
-  categoriesIds: number[];
+  author: number;
+  categories: number[];
 };
 
 const AddPost = () => {
@@ -20,6 +20,11 @@ const AddPost = () => {
   } = useForm<AddPostFormData>();
   const { showToast } = useAppContext();
 
+  // fetch data needed for the add post form
+  const { data: authors } = useQuery("getAuthors", apiClient.getAllAuthors);
+  const { data: categories } = useQuery("getUsers", apiClient.getAllCategories);
+
+  // define the mutation for sending the form
   const mutation = useMutation(apiClient.AddPost, {
     onSuccess: () => {
       // log, toast
@@ -47,7 +52,7 @@ Todo:
   });
 
   return (
-    <form className="flex-grow flex flex-col" onSubmit={() => onSubmit(data)}>
+    <form className="flex-grow flex flex-col" onSubmit={onSubmit}>
       <label className="flex flex-col">
         Post Title:
         <input
@@ -62,17 +67,29 @@ Todo:
 
       <label className="flex flex-col">
         Author:
-        <select multiple={false} placeholder="Insert Post Title">
-          <option>Ofir</option>
-          <option>Test</option>
+        <select
+          placeholder="Insert Post Title"
+          {...register("author", { required: true })}
+        >
+          {authors?.map((author) => (
+            <option value={author._id}>
+              {" "}
+              {author.firstName + " " + author.lastName}{" "}
+            </option>
+          ))}
         </select>
       </label>
 
       <label className="flex flex-col">
         Categories:
-        <select placeholder="Insert Post Title" multiple={true}>
-          <option>Tuna</option>
-          <option>Lafa</option>
+        <select
+          placeholder="Insert Post Title"
+          multiple={true}
+          {...register("categories", { required: true })}
+        >
+          {categories?.map((category) => (
+            <option value={category._id}> {category.name} </option>
+          ))}
         </select>
       </label>
 
@@ -107,6 +124,8 @@ Todo:
           </span>
         )}
       </label>
+
+      <button type="submit">Save Post!</button>
     </form>
   );
 };

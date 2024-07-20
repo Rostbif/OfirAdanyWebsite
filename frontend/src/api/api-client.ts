@@ -1,6 +1,10 @@
 import { LoginFormData } from "../pages/Login";
 import { RegisterFormData } from "../pages/Register";
-import { ValidateTokenResponse } from "../../../backend/src/shared/types";
+import {
+  CategoryType,
+  UserType,
+  ValidateTokenResponse,
+} from "../../../backend/src/shared/types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
@@ -67,8 +71,33 @@ export const validateToken = async (): ValidateTokenResponse => {
   return response.json();
 };
 
-// BlogPosts
+// Users
+export const getAllAuthors = async (): Promise<UserType[]> => {
+  const response = await fetch(`${API_BASE_URL}/api/users`, {
+    credentials: "include",
+  });
 
+  if (!response.ok) {
+    throw new Error("couldn't fetch authors");
+  }
+
+  return response.json();
+};
+
+// Categories
+export const getAllCategories = async (): Promise<CategoryType[]> => {
+  const response = await fetch(`${API_BASE_URL}/api/categories`, {
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    throw new Error("couldn't fetch categories");
+  }
+
+  return response.json();
+};
+
+// BlogPosts
 export const AddPost = async (data) => {
   const response = await fetch(`${API_BASE_URL}/api/blog-posts`, {
     method: "POST",
@@ -81,6 +110,18 @@ export const AddPost = async (data) => {
 
   if (!response.ok) {
     throw new Error("Couldn't add post");
+  }
+
+  return response.json();
+};
+
+export const getAllPosts = async () => {
+  const response = await fetch(`${API_BASE_URL}/api/blog-posts`, {
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    throw new Error("Couldn't fetch blog-posts");
   }
 
   return response.json();

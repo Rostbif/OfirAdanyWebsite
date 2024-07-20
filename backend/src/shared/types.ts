@@ -7,7 +7,7 @@ export type BasicModelType = {
 export type BlogPostType = BasicModelType & {
   title: string;
   description: string;
-  category: CategoryType;
+  categories: CategoryType[];
   content: string;
   author: UserType | null;
 };
