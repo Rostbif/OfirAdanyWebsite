@@ -19,23 +19,23 @@ const Blog = () => {
 
   const navigate = useNavigate();
   Array.from({ length: 10 });
-  const posts: BlogPost[] = Array.from({ length: 10 }, (_, index) => ({
-    title: `Post ${index + 1}`,
-    category: `Category ${index + 1}`,
-    description: `This is a long description for Post ${
-      index + 1
-    }. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Sed euismod, nisi at aliquet aliquam.`,
-  }));
+  // const posts: BlogPost[] = Array.from({ length: 10 }, (_, index) => ({
+  //   title: `Post ${index + 1}`,
+  //   category: `Category ${index + 1}`,
+  //   description: `This is a long description for Post ${
+  //     index + 1
+  //   }. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  //   Sed euismod, nisi at aliquet aliquam.`,
+  // }));
 
   const { data: posts2 } = useQuery<BlogPostType[]>(
     "getAllPosts",
     apiClient.getAllPosts
   );
 
-  const handleClick = () => {
+  const handleClick = (postId) => {
     //console.log("Clicked on post: ", e);
-    navigate("/blogPost");
+    navigate(`/blogPost/${postId}`);
   };
 
   return (
@@ -46,11 +46,12 @@ const Blog = () => {
         {posts2?.map((post) => {
           return (
             <PostCard
+              key={post._id}
               title={post.title}
               categories={post.categories}
               description={post.description}
               content={post.content}
-              onClick={handleClick}
+              onClick={() => handleClick(post._id)}
             ></PostCard>
           );
         })}

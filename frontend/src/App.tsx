@@ -37,7 +37,7 @@ function App() {
           }
         />
         <Route
-          path="/blogPost"
+          path="/blogPost/:blogPostId"
           element={
             <Layout>
               <BlogPost />

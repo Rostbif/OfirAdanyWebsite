@@ -8,7 +8,6 @@ const router = express.Router();
 // Get all categories
 router.get("/", async (req: Request, res: Response) => {
   try {
-    console.log("Reached get all categories");
     const categories = await Category.find().sort("name");
     res.json(categories);
   } catch (error) {
@@ -20,7 +19,6 @@ router.get("/", async (req: Request, res: Response) => {
 // Get a single category
 router.get("/:id", async (req: Request, res: Response) => {
   try {
-    console.log("Reached get a category");
     const category = await Category.findById(req.params.id);
     if (!category) {
       return res.status(404).json({ message: "Category not found" });

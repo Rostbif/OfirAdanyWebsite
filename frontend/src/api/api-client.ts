@@ -1,6 +1,7 @@
 import { LoginFormData } from "../pages/Login";
 import { RegisterFormData } from "../pages/Register";
 import {
+  BlogPostType,
   CategoryType,
   UserType,
   ValidateTokenResponse,
@@ -122,6 +123,20 @@ export const getAllPosts = async () => {
 
   if (!response.ok) {
     throw new Error("Couldn't fetch blog-posts");
+  }
+
+  return response.json();
+};
+
+export const getPostById = async (
+  blogPostId: string
+): Promise<BlogPostType> => {
+  const response = await fetch(`${API_BASE_URL}/api/blog-posts/${blogPostId}`, {
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    throw new Error("Couldn't fetch blog post");
   }
 
   return response.json();

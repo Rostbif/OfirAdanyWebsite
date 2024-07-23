@@ -39,10 +39,7 @@ const AddPost = () => {
   });
   /*
 Todo:
-3. Understand the best practice for fetching data for the component in react (plain fetch? use query? use effect?)
-1. pull the list of categories
-2. pull the list of authors
-4. Create the select components -> regular select for author, multiselect for categories
+1. fix the fact that we call the server many times.
 
 */
 
@@ -72,7 +69,7 @@ Todo:
           {...register("author", { required: true })}
         >
           {authors?.map((author) => (
-            <option value={author._id}>
+            <option key={author._id} value={author._id}>
               {" "}
               {author.firstName + " " + author.lastName}{" "}
             </option>
@@ -88,7 +85,10 @@ Todo:
           {...register("categories", { required: true })}
         >
           {categories?.map((category) => (
-            <option value={category._id}> {category.name} </option>
+            <option key={category._id} value={category._id}>
+              {" "}
+              {category.name}{" "}
+            </option>
           ))}
         </select>
       </label>
@@ -98,9 +98,7 @@ Todo:
         <textarea
           placeholder="Insert Post Title"
           {...register("description", { required: true })}
-        >
-          {" "}
-        </textarea>
+        ></textarea>
         {errors.description && (
           <span className="text-red-500 text-sm">
             {" "}
