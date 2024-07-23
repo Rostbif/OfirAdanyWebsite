@@ -1,0 +1,6 @@
+.tab-panel {
+  margin-top: 1em;
+  padding: 1em;
+  background-color: var(--tab-panel-bg-color);
+  border-radius: 0.5em;
+}

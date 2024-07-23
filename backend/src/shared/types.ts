@@ -7,9 +7,9 @@ export type BasicModelType = {
 export type BlogPostType = BasicModelType & {
   title: string;
   description: string;
-  category: CategoryType;
+  categories: CategoryType[];
   content: string;
-  author: UserType;
+  author: UserType | null;
 };
 
 export type CategoryType = BasicModelType & {
@@ -18,8 +18,13 @@ export type CategoryType = BasicModelType & {
 };
 
 export type UserType = BasicModelType & {
-  email: { type: String; required: true; unique: true };
-  password: { type: String; required: true };
-  firstName: { type: String; required: true };
-  lastName: { type: String; required: true };
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
+
+export type ValidateTokenResponse = {
+  userId: string;
+  userName: string;
 };
