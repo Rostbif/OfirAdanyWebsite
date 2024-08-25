@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: ofirWebsiteDb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./PostgresDB/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+# Placeholder for backend service
+
+# Placeholder for frontend service
+
+# Placeholder for Auth service
+
+volumes:
+  postgres_data:
+    driver: local
