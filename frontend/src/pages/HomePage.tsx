@@ -18,7 +18,7 @@ const HomePage = () => {
           </div>
           <div className="basis-1/2 flex justify-center">
             <img
-              src="https://res.cloudinary.com/dwtfped05/image/upload/v1719912600/PXL_20240630_093526454_ozqjpb.jpg"
+              src="https://res.cloudinary.com/dwtfped05/image/upload/v1725183767/pkljwhqaovdwasujjbl3.jpg"
               alt="Ofir Adany"
               className="size-96 rounded-lg shadow-md shadow-black-500"
             />
