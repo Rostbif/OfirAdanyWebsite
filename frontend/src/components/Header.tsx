@@ -29,14 +29,14 @@ const Header = () => {
   };
 
   return (
-    <div className="flex px-10 flex-col">
+    <div className="flex px-10 flex-col bg-gray-800 text-white shadow-lg">
       <div className="flex items-center justify-between m-4">
         <div className="flex-1">
           <img
             src="../public/OfirAdanyLogo.png"
             alt="Ofir Adany Logo"
             style={{ width: 200, height: 48 }}
-            className="shadow-lg shadow-black-500"
+            className="shadow-lg"
           />
         </div>
 
@@ -50,7 +50,7 @@ const Header = () => {
                 {userName}
                 {", "}
                 <button
-                  className="underline text-blue-500"
+                  className="underline text-yellow-300"
                   onClick={handleClick}
                 >
                   {" "}
@@ -61,7 +61,7 @@ const Header = () => {
               <span>
                 {" "}
                 guest{", "}
-                <Link className="underline text-blue-500" to="/login">
+                <Link className="underline text-yellow-300" to="/login">
                   {" "}
                   Login{" "}
                 </Link>{" "}
@@ -71,29 +71,26 @@ const Header = () => {
         </div>
 
         <div className="flex flex-col flex-1">
-          <div className="flex gap-2 self-end">
-            <NavLink to="/" className="hover:font-bold drop-shadow-md">
+          <div className="flex gap-4 self-end">
+            <NavLink to="/" className="hover:underline">
               Home
             </NavLink>
             <div className="justify-self-center">|</div>
-            <NavLink to="/about-me" className="hover:font-bold drop-shadow-md">
+            <NavLink to="/about-me" className="hover:underline">
               About Me
             </NavLink>
             <div className="justify-self-center">|</div>
-            <NavLink to="/about-me" className="hover:font-bold drop-shadow-md">
+            <NavLink to="/projects" className="hover:underline">
               Projects
             </NavLink>
             <div className="justify-self-center">|</div>
-            <NavLink to="/blog" className="hover:font-bold drop-shadow-md">
+            <NavLink to="/blog" className="hover:underline">
               Blog
             </NavLink>
             {isLoggedIn && (
               <>
                 <div className="justify-self-center">|</div>
-                <NavLink
-                  to="/admin-panel"
-                  className="hover:font-bold drop-shadow-md"
-                >
+                <NavLink to="/admin-panel" className="hover:font-bold">
                   Admin Panel
                 </NavLink>
               </>
@@ -101,7 +98,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <hr />
     </div>
   );
 };
