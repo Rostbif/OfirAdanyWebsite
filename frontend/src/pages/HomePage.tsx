@@ -1,4 +1,9 @@
-import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
+import {
+  FaQuoteLeft,
+  FaQuoteRight,
+  FaLinkedin,
+  FaGithub,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
@@ -14,12 +19,28 @@ const HomePage = () => {
               A full stack engineer with a passion for building great products.
             </p>
           </div>
-          <div className="md:w-1/3 flex justify-center">
+          <div className="md:w-1/3 flex justify-center items-center flex-col">
             <img
               src="https://res.cloudinary.com/dwtfped05/image/upload/v1725183767/pkljwhqaovdwasujjbl3.jpg"
               alt="Ofir Adany"
               className="w-64 h-64 rounded-full shadow-lg"
             />
+            <div className="flex space-x-4 mt-4">
+              <a
+                href="https://www.linkedin.com/in/ofir-adany-650042183/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin size="2rem" className="text-blue-700" />
+              </a>
+              <a
+                href="https://github.com/Rostbif"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub size="2rem" className="text-gray-800" />
+              </a>
+            </div>
           </div>
           <div className="md:w-1/3 text-center md:text-right">
             <div className="flex justify-start md:justify-start mb-4">

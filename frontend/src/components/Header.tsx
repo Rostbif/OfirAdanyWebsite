@@ -32,12 +32,14 @@ const Header = () => {
     <div className="flex px-10 flex-col bg-gray-800 text-white shadow-lg">
       <div className="flex items-center justify-between m-4">
         <div className="flex-1">
-          <img
-            src="../public/OfirAdanyLogo.png"
-            alt="Ofir Adany Logo"
-            style={{ width: 200, height: 48 }}
-            className="shadow-lg"
-          />
+          <Link to="/">
+            <img
+              src="../public/OfirAdanyLogo.png"
+              alt="Ofir Adany Logo"
+              style={{ width: 200, height: 48 }}
+              className="shadow-lg"
+            />
+          </Link>
         </div>
 
         {/* Insert here the name of the logged in user + logout option */}
@@ -76,7 +78,7 @@ const Header = () => {
               Home
             </NavLink>
             <div className="justify-self-center">|</div>
-            <NavLink to="/about-me" className="hover:underline">
+            <NavLink to="/about" className="hover:underline">
               About Me
             </NavLink>
             <div className="justify-self-center">|</div>
