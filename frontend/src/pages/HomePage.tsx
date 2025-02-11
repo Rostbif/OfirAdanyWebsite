@@ -8,13 +8,11 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <div className="flex flex-col justify-center items-center grow bg-gray-100 px-10">
+    <div className="flex flex-col justify-center items-center grow px-10">
       <div className="container mx-auto py-10">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="md:w-1/3 text-center md:text-left">
-            <h1 className="text-6xl font-bold text-gray-800 mb-4">
-              I'm Ofir Adany
-            </h1>
+            <h1 className="text-8xl text-gray-800 mb-4">I'm Ofir Adany</h1>
             <p className="mb-6">
               A full stack engineer with a passion for building great products.
             </p>
@@ -23,7 +21,7 @@ const HomePage = () => {
             <img
               src="https://res.cloudinary.com/dwtfped05/image/upload/v1725183767/pkljwhqaovdwasujjbl3.jpg"
               alt="Ofir Adany"
-              className="w-64 h-64 rounded-full shadow-lg"
+              className="rounded-full shadow-lg"
             />
             <div className="flex space-x-4 mt-4">
               <a

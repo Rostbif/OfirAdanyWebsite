@@ -3,9 +3,7 @@ const About = () => {
     <div>
       <div className="grid grid-cols-2 gap-10">
         <div>
-          <h1 className=""> I'm Ofir</h1>
-          <h2> A Software and Product Expert. </h2>
-
+          <h1>About me</h1>
           <p>
             As a <b>MAMRAM</b> graduate and a full-stack developer with over
             four years of experience in the IDF’s elite Matzpen Unit, I have
@@ -22,14 +20,12 @@ const About = () => {
             technically sound but also user-centric and business-driven.
           </p>
           <p>
-            {" "}
             Whether it's building a full-stack web application, optimizing
             backend performance, or designing scalable APIs, I am committed to
             delivering high-quality, efficient solutions{" "}
-            <b>tailored to your needs.</b>
-            If you're looking for a freelance developer who understands both the
-            technical and strategic aspects of software development, let's
-            connect and bring your ideas to life!
+            <b>tailored to your needs.</b> If you're looking for a freelance
+            developer who understands both the technical and strategic aspects
+            of software development, let's connect and bring your ideas to life!
           </p>
         </div>
         <div className="py-10">
