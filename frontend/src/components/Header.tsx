@@ -51,10 +51,7 @@ const Header = () => {
                 {" "}
                 {userName}
                 {", "}
-                <button
-                  className="underline text-yellow-300"
-                  onClick={handleClick}
-                >
+                <button className="underline" onClick={handleClick}>
                   {" "}
                   Logout{" "}
                 </button>
@@ -63,7 +60,7 @@ const Header = () => {
               <span>
                 {" "}
                 guest{", "}
-                <Link className="underline text-yellow-300" to="/login">
+                <Link className="underline" to="/login">
                   {" "}
                   Login{" "}
                 </Link>{" "}

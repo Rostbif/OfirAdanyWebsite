@@ -9,21 +9,34 @@
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-
-  /* color-scheme: light dark; */
-  /* background-color: #242424; */
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
 }
 
 a {
   &.active {
-    color: #aaee0a;
+    @apply text-yellow-300;
     font-weight: bold;
   }
 
   &:hover {
     font-weight: bold;
+  }
+}
+
+@layer base {
+  h1 {
+    @apply text-6xl text-gray-800;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    @apply text-4xl text-gray-600;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+  }
+  p {
+    @apply text-xl text-gray-700 leading-relaxed mb-4;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
   }
 }
 

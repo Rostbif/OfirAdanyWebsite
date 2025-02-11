@@ -15,7 +15,7 @@ const HomePage = () => {
             <h1 className="text-6xl font-bold text-gray-800 mb-4">
               I'm Ofir Adany
             </h1>
-            <p className="text-xl text-gray-600 mb-6">
+            <p className="mb-6">
               A full stack engineer with a passion for building great products.
             </p>
           </div>
@@ -46,7 +46,7 @@ const HomePage = () => {
             <div className="flex justify-start md:justify-start mb-4">
               <FaQuoteLeft size="2.25rem" className="text-gray-500" />
             </div>
-            <p className="text-lg text-gray-600 italic mb-4">
+            <p>
               A good developer is someone who can take a business problem
               end-to-end.
               <Link to="/blog" className="font-semibold text-blue-500">

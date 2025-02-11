@@ -9,7 +9,9 @@ const Layout = ({ children }: Props) => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
-      <div className="container mx-auto py-10 grow flex">{children}</div>
+      <div className="container mx-auto py-10 px-10 grow flex flex-col">
+        {children}
+      </div>
       <Footer />
     </div>
   );
