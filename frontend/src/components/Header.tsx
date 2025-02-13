@@ -13,12 +13,10 @@ const Header = () => {
     onSuccess: () => {
       queryClient.invalidateQueries("validateToken");
       console.log("user signed out successfully");
-      showToast({ message: "Successful logut!", type: "Success" });
-      // validate token
+      showToast({ message: "Successful logout!", type: "Success" });
       navigate("/");
     },
     onError: (error: Error) => {
-      // show the error toast
       showToast({ message: "Unsuccessful logout!", type: "Error" });
       console.log("the error:", error);
     },
@@ -45,26 +43,29 @@ const Header = () => {
         {/* Insert here the name of the logged in user + logout option */}
         <div className="flex-1 flex justify-center">
           <div>
-            <span> Welcome </span>
             {isLoggedIn ? (
-              <span>
-                {" "}
-                {userName}
-                {", "}
-                <button className="underline" onClick={handleClick}>
+              <div>
+                <span> Welcome </span>
+                <span>
                   {" "}
-                  Logout{" "}
-                </button>
-              </span>
+                  {userName}
+                  {", "}
+                  <button className="underline" onClick={handleClick}>
+                    {" "}
+                    Logout{" "}
+                  </button>
+                </span>
+              </div>
             ) : (
-              <span>
-                {" "}
-                guest{", "}
-                <Link className="underline" to="/login">
-                  {" "}
-                  Login{" "}
-                </Link>{" "}
-              </span>
+              <></>
+              // <span>
+              //   {" "}
+              //   guest{", "}
+              //   <Link className="underline" to="/login">
+              //     {" "}
+              //     Login{" "}
+              //   </Link>{" "}
+              // </span>
             )}
           </div>
         </div>

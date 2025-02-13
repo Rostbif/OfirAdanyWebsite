@@ -70,14 +70,14 @@ function App() {
             </Layout>
           }
         />
-        <Route
+        {/* <Route
           path="/register"
           element={
             <Layout>
               <Register />
             </Layout>
           }
-        />
+        /> */}
         {isLoggedIn && (
           <Route
             path="/admin-panel"

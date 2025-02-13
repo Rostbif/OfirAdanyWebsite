@@ -3,10 +3,11 @@ import cors from "cors";
 import "dotenv/config";
 import blogPostsRoutes from "./routes/blogPosts";
 import categoriesRoutes from "./routes/categories";
-import usersRoutes from "./routes/users"; // Import the usersRoutes module
+import usersRoutes from "./routes/users";
 import authRoutes from "./routes/auth";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import rateLimit from "express-rate-limit";
 
 let connectionString = process.env.MONGODB_CONNECTION_STRING as string;
 mongoose.connect(connectionString);
@@ -21,6 +22,12 @@ app.use(
     credentials: true,
   })
 );
+// Added rate limiter by copilot recommendation (TBD - learn more about that)
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
+app.use(limiter);
 
 const port = 3000;
 

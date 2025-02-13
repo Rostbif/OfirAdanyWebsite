@@ -1,5 +1,4 @@
 import { CategoryType } from "../../../backend/src/shared/types";
-import styles from "./PostCard.module.css";
 
 type PostCardProps = {
   title: string;
