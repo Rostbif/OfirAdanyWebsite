@@ -16,16 +16,26 @@ mongoose.connect(connectionString);
 const path = require("path");
 const app = express();
 
+let frontendRealURL;
+switch (process.env.NODE_ENV) {
+  case "pre-prod":
+    frontendRealURL = "http://localhost:3000";
+    break;
+  case "production":
+    frontendRealURL = "https://www.ofiradany.com";
+    break;
+  default:
+    frontendRealURL = process.env.FRONTEND_URL;
+    break;
+}
+
 // Adding middlewares to the app
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === "pre-prod"
-        ? "http://localhost:3000"
-        : process.env.FRONTEND_URL,
+    origin: frontendRealURL,
     credentials: true,
   })
 );
