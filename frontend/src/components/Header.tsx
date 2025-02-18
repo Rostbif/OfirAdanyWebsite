@@ -13,12 +13,10 @@ const Header = () => {
     onSuccess: () => {
       queryClient.invalidateQueries("validateToken");
       console.log("user signed out successfully");
-      showToast({ message: "Successful logut!", type: "Success" });
-      // validate token
+      showToast({ message: "Successful logout!", type: "Success" });
       navigate("/");
     },
     onError: (error: Error) => {
-      // show the error toast
       showToast({ message: "Unsuccessful logout!", type: "Error" });
       console.log("the error:", error);
     },
@@ -29,71 +27,70 @@ const Header = () => {
   };
 
   return (
-    <div className="flex px-10 flex-col">
+    <div className="flex px-10 flex-col bg-gray-800 text-white shadow-lg">
       <div className="flex items-center justify-between m-4">
         <div className="flex-1">
-          <img
-            src="../public/OfirAdanyLogo.png"
-            alt="Ofir Adany Logo"
-            style={{ width: 200, height: 48 }}
-            className="shadow-lg shadow-black-500"
-          />
+          <Link to="/">
+            <img
+              src="../public/OfirAdanyLogo.png"
+              alt="Ofir Adany Logo"
+              style={{ width: 200, height: 48 }}
+              className="shadow-lg"
+            />
+          </Link>
         </div>
 
         {/* Insert here the name of the logged in user + logout option */}
         <div className="flex-1 flex justify-center">
           <div>
-            <span> Welcome </span>
             {isLoggedIn ? (
-              <span>
-                {" "}
-                {userName}
-                {", "}
-                <button
-                  className="underline text-blue-500"
-                  onClick={handleClick}
-                >
+              <div>
+                <span> Welcome </span>
+                <span>
                   {" "}
-                  Logout{" "}
-                </button>
-              </span>
+                  {userName}
+                  {", "}
+                  <button className="underline" onClick={handleClick}>
+                    {" "}
+                    Logout{" "}
+                  </button>
+                </span>
+              </div>
             ) : (
-              <span>
-                {" "}
-                guest{", "}
-                <Link className="underline text-blue-500" to="/login">
-                  {" "}
-                  Login{" "}
-                </Link>{" "}
-              </span>
+              <></>
+              // <span>
+              //   {" "}
+              //   guest{", "}
+              //   <Link className="underline" to="/login">
+              //     {" "}
+              //     Login{" "}
+              //   </Link>{" "}
+              // </span>
             )}
           </div>
         </div>
 
         <div className="flex flex-col flex-1">
-          <div className="flex gap-2 self-end">
-            <NavLink to="/" className="hover:font-bold drop-shadow-md">
+          <div className="flex gap-4 self-end">
+            <NavLink to="/" className="hover:underline">
               Home
             </NavLink>
             <div className="justify-self-center">|</div>
-            <NavLink to="/about-me" className="hover:font-bold drop-shadow-md">
+            <NavLink to="/about" className="hover:underline">
               About Me
             </NavLink>
             <div className="justify-self-center">|</div>
-            <NavLink to="/about-me" className="hover:font-bold drop-shadow-md">
+            <NavLink to="/projects" className="hover:underline">
               Projects
             </NavLink>
             <div className="justify-self-center">|</div>
-            <NavLink to="/blog" className="hover:font-bold drop-shadow-md">
+            <NavLink to="/blog" className="hover:underline">
               Blog
             </NavLink>
             {isLoggedIn && (
               <>
                 <div className="justify-self-center">|</div>
-                <NavLink
-                  to="/admin-panel"
-                  className="hover:font-bold drop-shadow-md"
-                >
+                <NavLink to="/admin-panel" className="hover:font-bold">
                   Admin Panel
                 </NavLink>
               </>
@@ -101,7 +98,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <hr />
     </div>
   );
 };

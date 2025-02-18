@@ -10,7 +10,7 @@ const router = express.Router();
 router.post(
   "/login",
   [
-    check("email", "Email is required").isEmail(),
+    check("email", "Valid email is required").isEmail().normalizeEmail(),
     check("password", "Password is required").isString(),
   ],
   async (req: Request, res: Response) => {
@@ -44,6 +44,7 @@ router.post(
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         maxAge: 86400000,
+        sameSite: "strict",
       });
 
       return res.status(200).json({ messasge: "Successfull login" });

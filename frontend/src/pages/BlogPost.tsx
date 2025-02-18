@@ -25,10 +25,13 @@ const BlogPost = () => {
   });
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <h1 className="py-4 text-3xl font-bold">{blogPostData?.title}</h1>
-      <hr className="bg-white" />
-      <p className="grow">{blogPostData?.description}</p>
+    <div className="flex flex-col justify-center p-6 bg-white rounded-lg shadow-md">
+      <h2 className="text-3xl font-bold mb-4">{blogPostData?.title}</h2>
+      <hr className="border-gray-300 mb-4" />
+      <h3 className="italic text-gray-700 mb-2">{blogPostData?.description}</h3>
+      <p className="text-gray-500 mb-4">Author: Ofir Adany</p>
+      <p className="text-gray-500 mb-4">Date: Feb 2, 2025 09:00</p>
+      <p className="text-gray-700 leading-relaxed">{blogPostData?.content}</p>
     </div>
   );
 };
