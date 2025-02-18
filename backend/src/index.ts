@@ -16,18 +16,18 @@ mongoose.connect(connectionString);
 const path = require("path");
 const app = express();
 
-let frontendRealURL;
-switch (process.env.NODE_ENV) {
-  case "pre-prod":
-    frontendRealURL = "http://localhost:3000";
-    break;
-  case "production":
-    frontendRealURL = "https://www.ofiradany.com";
-    break;
-  default:
-    frontendRealURL = process.env.FRONTEND_URL;
-    break;
-}
+let frontendRealURL = true;
+// switch (process.env.NODE_ENV) {
+//   case "pre-prod":
+//     frontendRealURL = "http://localhost:3000";
+//     break;
+//   case "production":
+//     frontendRealURL = "https://www.ofiradany.com";
+//     break;
+//   default:
+//     frontendRealURL = process.env.FRONTEND_URL;
+//     break;
+// }
 
 // Adding middlewares to the app
 app.use(cookieParser());
@@ -56,7 +56,10 @@ app.use("/api/users", usersRoutes);
 app.use("/api/auth", authRoutes);
 
 // only for dev mod using the build frontend files, when I want to host the static files with my node server...
-if (process.env.NODE_ENV === "pre-prod") {
+if (
+  process.env.NODE_ENV === "pre-prod" ||
+  process.env.NODE_ENV === "production"
+) {
   // Serve static files from the React app
   app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
