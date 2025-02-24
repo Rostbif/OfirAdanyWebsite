@@ -12,7 +12,7 @@ const HomePage = () => {
       <div className="container mx-auto py-10">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="md:w-1/3 text-center md:text-left">
-            <h1 className="text-8xl text-gray-800 mb-4">I'm Ofir Adany</h1>
+            <h1 className="text-8xl text-gray-800 mb-4">I'm Ofir Adani</h1>
             <p className="mb-6">
               A full stack engineer with a passion for building great products.
             </p>
