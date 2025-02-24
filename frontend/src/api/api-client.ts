@@ -124,7 +124,7 @@ export const getAllPosts = async () => {
   });
 
   if (!response.ok) {
-    throw new Error("Couldn't fetch blog-posts");
+    throw new Error("Couldn't fetch blog-posts2");
   }
 
   return response.json();
