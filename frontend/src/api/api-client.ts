@@ -7,7 +7,8 @@ import {
   ValidateTokenResponse,
 } from "../../../backend/src/shared/types";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://3.13.197.119:3000";
 
 // authentication
 export const signIn = async (formData: LoginFormData) => {
