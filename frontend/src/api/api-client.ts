@@ -7,9 +7,9 @@ import {
   ValidateTokenResponse,
 } from "../../../backend/src/shared/types";
 
-//const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
-const API_BASE_URL = "https://api.ofiradany.com";
+// const API_BASE_URL = "https://api.ofiradany.com";
 
 // authentication
 export const signIn = async (formData: LoginFormData) => {
