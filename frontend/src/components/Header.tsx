@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 import { useAppContext } from "../contexts/AppContext";
 import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from "../api/api-client";
-import OfirAdanyLogo from "../public/OfirAdanyLogo.png";
+import OfirAdanyLogo from "../../public/OfirAdanyLogo.png";
 
 const Header = () => {
   const { isLoggedIn, showToast, userName } = useAppContext();
