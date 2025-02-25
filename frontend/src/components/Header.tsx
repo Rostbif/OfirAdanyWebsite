@@ -3,6 +3,7 @@ import styles from "./Header.module.css";
 import { useAppContext } from "../contexts/AppContext";
 import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from "../api/api-client";
+import OfirAdanyLogo from "../public/OfirAdanyLogo.png";
 
 const Header = () => {
   const { isLoggedIn, showToast, userName } = useAppContext();
@@ -32,7 +33,7 @@ const Header = () => {
         <div className="flex-1">
           <Link to="/">
             <img
-              src="../public/OfirAdanyLogo.png"
+              src={OfirAdanyLogo}
               alt="Ofir Adany Logo"
               style={{ width: 200, height: 48 }}
               className="shadow-lg"
