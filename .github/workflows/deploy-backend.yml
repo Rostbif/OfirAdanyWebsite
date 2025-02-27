@@ -38,6 +38,11 @@ jobs:
           mkdir -p ~/.ssh
           # Disable strict host key checking for SSH and SCP
           echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+          # Clean old files from the EC2 instance
+          ssh -i private_key -o StrictHostKeyChecking=no ec2-user@3.13.197.119 << 'EOF'
+            rm -rf /home/ec2-user/backend/dist
+            rm -rf /home/ec2-user/backend/node_modules
+          EOF
           # Copy the built project to the EC2 instance
           scp -i private_key -o StrictHostKeyChecking=no -r backend/dist ec2-user@3.13.197.119:/home/ec2-user/backend/dist
           scp -i private_key -o StrictHostKeyChecking=no backend/package.json ec2-user@3.13.197.119:/home/ec2-user/backend/package.json
