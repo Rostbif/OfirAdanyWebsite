@@ -30,12 +30,12 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           EC2_USER: ec2-user
-          EC2_HOST: 3.13.192.119
+          EC2_HOST: 3.13.197.119
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key
           chmod 600 private_key
-          scp -i private_key -r backend ec2-user@3.13.192.119:/home/ec2-user/
-          ssh -i private_key ec2-user@3.13.192.119 << 'EOF'
+          scp -i private_key -r backend ec2-user@3.13.197.119:/home/ec2-user/
+          ssh -i private_key ec2-user@3.13.197.119 << 'EOF'
             cd /home/ec2-user/backend
             npm install
             npm run build
