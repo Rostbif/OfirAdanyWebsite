@@ -6,7 +6,7 @@
     "dev": "cross-env NODE_ENV=development nodemon src/index.ts",
     "pre-prod-front-only": "cross-env NODE_ENV=pre-prod nodemon src/index.ts",
     "pre-prod-full": "cross-env NODE_ENV=pre-prod tsc && node dist/index.js",
-    "build": "npm install && npx tsc",
+    "build": "npx tsc",
     "start": "cross-env NODE_ENV=production tsc && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
