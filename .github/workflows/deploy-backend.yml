@@ -34,6 +34,8 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key
           chmod 600 private_key
+          # Create the .ssh directory
+          mkdir -p ~/.ssh
           # Disable strict host key checking for SSH and SCP
           echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
           scp -i private_key -o StrictHostKeyChecking=no -r backend ec2-user@3.13.197.119:/home/ec2-user/
