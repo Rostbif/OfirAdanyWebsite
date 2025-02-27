@@ -70,5 +70,5 @@ if (
 }
 
 app.listen(port, "0.0.0.0", () => {
-  console.log(`Hi Ofir! Server running at http:/0.0.0.0:${port}`);
+  console.log(`Hi Ofir! Server running at http://0.0.0.0:${port}`);
 });

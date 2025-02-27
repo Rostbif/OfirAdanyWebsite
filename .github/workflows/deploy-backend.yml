@@ -29,6 +29,9 @@ jobs:
       - name: Deploy to EC2
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          MONGODB_CONNECTION_STRING: ${{ secrets.MONGODB_CONNECTION_STRING }}
+          FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
+          JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
           EC2_USER: ec2-user
           EC2_HOST: 3.13.197.119
         run: |
@@ -50,6 +53,9 @@ jobs:
           scp -i private_key -o StrictHostKeyChecking=no backend/package.json ec2-user@3.13.197.119:/home/ec2-user/backend/package.json
           scp -i private_key -o StrictHostKeyChecking=no backend/package-lock.json ec2-user@3.13.197.119:/home/ec2-user/backend/package-lock.json
           ssh -i private_key -o StrictHostKeyChecking=no ec2-user@3.13.197.119 << 'EOF'
+            echo "MONGODB_CONNECTION_STRING=${{ secrets.MONGODB_CONNECTION_STRING }}" > /home/ec2-user/backend/.env
+            echo "FRONTEND_URL=${{ secrets.FRONTEND_URL }}" >> /home/ec2-user/backend/.env
+            echo "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}" >> /home/ec2-user/backend/.env
             cd /home/ec2-user/backend
             npm install --production
             pm2 start dist/index.js --name backend
