@@ -28,8 +28,9 @@ const Header = () => {
   };
 
   return (
-    <div className="flex px-10 flex-col bg-gray-800 text-white shadow-lg">
+    <div className="flex px-10 flex-col border-b-gradient">
       <div className="flex items-center justify-between m-4">
+        {/* The logo feature */}
         <div className="flex-1">
           <Link to="/">
             <img
@@ -42,6 +43,7 @@ const Header = () => {
         </div>
 
         {/* Insert here the name of the logged in user + logout option */}
+        {/* The login feature */}
         <div className="flex-1 flex justify-center">
           <div>
             {isLoggedIn ? (
@@ -71,21 +73,22 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="flex flex-col flex-1">
-          <div className="flex gap-4 self-end">
-            <NavLink to="/" className="hover:underline">
+        {/* The menu feature */}
+        <div className="flex flex-col flex-1 text-2xl font-semibold tracking-wide">
+          <div className="flex gap-6 self-end">
+            <NavLink to="/" className="">
               Home
             </NavLink>
-            <div className="justify-self-center">|</div>
-            <NavLink to="/about" className="hover:underline">
-              About Me
+            {/* <div className="justify-self-center">|</div> */}
+            <NavLink to="/about" className="">
+              About
             </NavLink>
-            <div className="justify-self-center">|</div>
-            <NavLink to="/projects" className="hover:underline">
+            {/* <div className="justify-self-center">|</div> */}
+            <NavLink to="/projects" className="">
               Projects
             </NavLink>
-            <div className="justify-self-center">|</div>
-            <NavLink to="/blog" className="hover:underline">
+            {/* <div className="justify-self-center">|</div> */}
+            <NavLink to="/blog" className="">
               Blog
             </NavLink>
             {isLoggedIn && (
